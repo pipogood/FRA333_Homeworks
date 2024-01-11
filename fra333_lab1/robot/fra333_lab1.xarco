@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="fra333_lab1">
+
+
+
+<material name="Grey">
+  <color rgba="0.2 0.2 0.2 1.0"/>
+</material>
+
+<material name="Orange">
+  <color rgba="1.0 0.423529411765 0.0392156862745 1.0"/>
+</material>
+
+<material name="Blue">
+  <color rgba="0.5 0.7 1.0 1.0"/>      
+</material>
+
+<!-- <link name="world"/> -->
+
+<link name="link_0">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://fra333_lab1/meshes/link_0.stl"/>
+      </geometry>
+      <material name="Grey"/>
+    </visual>
+  </link>
+
+  <joint name="joint_1" type="revolute">
+    <parent link="link_0"/>
+    <child link="link_1"/>
+    <origin rpy="0 0 0" xyz="0 0 0.16"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="0.5" velocity="0.5"/>
+  </joint>
+
+  <link name="link_1">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://fra333_lab1/meshes/link_1.stl"/>
+      </geometry>
+      <material name="Blue"/>
+    </visual>
+  </link>
+
+  <joint name="joint_2" type="revolute">
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <origin rpy="1.57079632679   0 0" xyz="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="0.5" velocity="0.5"/>
+  </joint>
+
+  <link name="link_2">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://fra333_lab1/meshes/link_2.stl"/>
+      </geometry>
+      <material name="Orange"/>
+    </visual>
+  </link>
+
+  <joint name="joint_3" type="revolute">
+    <parent link="link_2"/>
+    <child link="link_3"/>
+    <origin rpy="0 0 0" xyz="0.37 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="0.5" velocity="0.5"/>
+  </joint>
+
+  <link name="link_3">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://fra333_lab1/meshes/link_3.stl"/>
+      </geometry>
+      <material name="Orange"/>
+    </visual>
+  </link>
+
+  <joint name="joint_eff" type="fixed">
+    <parent link="link_3"/>
+    <child link="end_effector"/>
+    <origin rpy="1.57 0 1.57" xyz="0.26 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="end_effector">
+  </link>
+
+</robot>
